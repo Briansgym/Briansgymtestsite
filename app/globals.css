@@ -1,0 +1,83 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-primary: #1e5a99;
+  --color-primary-light: #2c79bf;
+  --color-primary-dark: #143d6b;
+  --color-navy: #070f1d;
+  --color-accent: #e63946;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-navy);
+  color: #e6edf5;
+  -webkit-font-smoothing: antialiased;
+}
+
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-7xl px-5 sm:px-6 lg:px-8;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold tracking-wide transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-navy;
+  }
+
+  .btn-accent {
+    @apply btn bg-accent text-white shadow-glow-accent hover:bg-accent-dark hover:-translate-y-0.5 focus-visible:ring-accent;
+  }
+
+  .btn-primary {
+    @apply btn bg-primary text-white hover:bg-primary-light hover:-translate-y-0.5 focus-visible:ring-primary;
+  }
+
+  .btn-outline {
+    @apply btn border border-white/25 bg-white/5 text-white backdrop-blur hover:bg-white/10 hover:-translate-y-0.5 focus-visible:ring-white/40;
+  }
+
+  .card {
+    @apply rounded-2xl border border-white/10 bg-navy-light/70 p-6 backdrop-blur transition-all duration-300;
+  }
+
+  .eyebrow {
+    @apply inline-block text-xs font-bold uppercase tracking-[0.2em] text-accent;
+  }
+
+  .section {
+    @apply py-16 sm:py-20 lg:py-28;
+  }
+
+  .heading-gradient {
+    @apply bg-gradient-to-r from-white via-white to-primary-light bg-clip-text text-transparent;
+  }
+}
+
+/* Scroll reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+  will-change: opacity, transform;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
